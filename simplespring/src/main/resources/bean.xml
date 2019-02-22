@@ -1,0 +1,35 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id = "SingletonComponent" class = "io.alphadevs.components.SingletonComponent" scope="singleton" init-method="init">
+        <property name="componentProperty" value="propertyValue"></property>
+    </bean>
+
+    <bean id = "SingletonLazyComponent" class = "io.alphadevs.components.SingletonLazyComponent" scope="singleton" lazy-init="true" init-method="init">
+        <property name="componentProperty" value="propertyValue"></property>
+    </bean>
+
+    <bean id = "PrototypeComponent" class = "io.alphadevs.components.PrototypeComponent" scope="prototype" init-method="init">
+        <property name="componentProperty" value="propertyValue"></property>
+    </bean>
+
+    <bean id="AutowiredComponent" class="io.alphadevs.components.AutowiredComponent">
+        <property name="name" value="MyName"></property>
+    </bean>
+
+    <bean id="AutowiredPrototypeComponent" class="io.alphadevs.components.AutowiredPrototypeComponent" scope="prototype">
+        <property name="name" value="MyName"></property>
+    </bean>
+
+    <bean id="ComplexComponent" class="io.alphadevs.components.ComplexComponent">
+        <property name="autowiredComponent" ref="AutowiredComponent"></property>
+        <property name="autowiredPrototypeComponent" ref="AutowiredPrototypeComponent"></property>
+    </bean>
+
+
+
+</beans>
